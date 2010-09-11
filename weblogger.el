@@ -717,12 +717,12 @@ available."
 		    (list "X-TextType"
 			  (cdr (assoc "texttype" entry)))
 		    (list "Subject" title)
-                    (list "Keywords" (let ((cats (cdr (assoc "categories" entry))))
+                    (list "Categories" (let ((cats (cdr (assoc "categories" entry))))
                                        (when (> (length cats) 0)
                                          (mapconcat
                                           (lambda (p) p)
                                           cats ", "))))
-		    (list "Summary" (cdr (assoc "mt_keywords" entry)))
+		    (list "Keywords" (cdr (assoc "mt_keywords" entry)))
                                         ; Note that the blogger API on
                                         ; blogger.com is depcrated and
                                         ; broken on this element.
@@ -1458,9 +1458,9 @@ internally).  If BUFFER is not given, use the current buffer."
 	   (cons "title"     (or (message-fetch-field "Subject")
 				 weblogger-default-title))
            (cons "categories" (vconcat (or (message-tokenize-header
-                                            (message-fetch-field "Keywords") ", ")
+                                            (message-fetch-field "Categories") ", ")
                                            weblogger-default-categories)))
-	   (cons "mt_keywords" (message-fetch-field "Summary"))
+	   (cons "mt_keywords" (message-fetch-field "Keywords"))
 
 	   (when (message-fetch-field "In-Reply-To")
              (cons "trackbacks"
