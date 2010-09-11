@@ -1288,7 +1288,8 @@ like."
 	(description      (assoc-string "description" response t))
 	(extended         (assoc-string "mt_text_more" response t))
 	(tags        (cdr (assoc-string "mt_tags" response t)))
-        (categories  (cdr (assoc-string "categories" response t))))
+        (categories  (cdr (assoc-string "categories" response t)))
+        (mt_keywords (cdr (assoc-string "mt_keywords" response t))))
 
     (cond (content
 	   (delq nil (list
