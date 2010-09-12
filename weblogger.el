@@ -679,7 +679,7 @@ available."
   (weblogger-edit-entry))
 
 (defun weblogger-entry-setup-headers (entry &optional body-line)
-  "Add any pertinant headers to the weblog entry."
+  "Add any pertinent headers to the weblog entry."
   (let ((entry-id (when (cdr (assoc  "entry-id" entry))
 		    (if (stringp (cdr (assoc  "entry-id" entry)))
 			(cdr (assoc  "entry-id" entry))
