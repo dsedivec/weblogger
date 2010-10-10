@@ -689,10 +689,12 @@ available."
     (mapc 'message-add-header
 	    (delq nil
 		  (mapcar
-		   (lambda (bit)
-		     (when (car (cdr-safe bit))
-		       (concat (car bit) ": "
-			       (cadr bit))))
+		   (lambda (header)
+                     (let ((name (car header))
+                           (value (cadr header)))
+                       (assert (or (null value) (stringp value)))
+                       (when (and value (> (length value) 0))
+                         (concat name ": " value))))
 		   (list
 		    (list "Message-ID"
 			  (when entry-id
