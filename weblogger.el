@@ -683,8 +683,7 @@ available."
   (let ((entry-id (when (cdr (assoc  "entry-id" entry))
 		    (if (stringp (cdr (assoc  "entry-id" entry)))
 			(cdr (assoc  "entry-id" entry))
-		      (int-to-string (cdr (assoc  "entry-id" entry))))))
-	(title    (cdr (assoc "title"       entry))))
+		      (int-to-string (cdr (assoc  "entry-id" entry)))))))
 
     (mapc 'message-add-header
 	    (delq nil
@@ -718,7 +717,8 @@ available."
 			  (cdr (assoc "url" entry)))
 		    (list "X-TextType"
 			  (cdr (assoc "texttype" entry)))
-		    (list "Subject" title)
+		    (list "Subject"
+                          (cdr (assoc "title" entry)))
                     (list "Categories" (let ((cats (cdr (assoc "categories" entry))))
                                        (when (> (length cats) 0)
                                          (mapconcat
